@@ -8,4 +8,5 @@ yksinkertaisempia osuuksia (visualisointi, datan käsittely, ohjelman käyttämi
 tavalla tulen muuntamaan harjoitusdatan knn kaavioksi. Alkuun käytän varmaankin jotain suhteellisen yksinkertaista
 ratkaisua kuten valkoisten pixelien painotettua keskiarvoa. Käsiteltävä data tulee olemaan mustavalkoista.
 
+Käytin viikolla 1 aikaa n. 4h projektiin
 

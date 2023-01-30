@@ -3,5 +3,5 @@ kotisivulta ladattuja tiedostoja käsitellään alkuperäisessä muodossa. Tulen
 jotta sitä ei tarvitsisi tehdä aina ohjelman ajon yhteydessä. Ubyte tiedostojen käsitteleminen oli itselle uutta ja siinä oli oppimista.
 Tutkin myös datan käsittelyä mustavalkoisena. Viikon tuottavan työn määrä jäi varsin vähäiseksi.
 Olen miettinyt ratkaisuja sille miten vertailen numeroita ja mielessäni on ollut ratkaisu jossa valittaisiin tasaisesti x-määrä pisteitä kuvasta 
-joiden suhteet loisivat vertailtavan mallin. 
+joiden suhteet loisivat vertailtavan mallin. Perehdyn myös Hausdorff etäisyyteen toisena vaihtoehtona.
 Tällä viikolla tunteja käytetty n.11

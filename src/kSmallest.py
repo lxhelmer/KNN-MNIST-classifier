@@ -1,2 +1,0 @@
-def ksmallest(values):
-    todo

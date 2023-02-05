@@ -1,6 +1,6 @@
 import math
 
-def m_hausdoff_etaisyys(luokiteltava, harjoitus):
+def m_hausdorff_etaisyys(luokiteltava, harjoitus):
     return max(d_6(luokiteltava, harjoitus),d_6(harjoitus,luokiteltava))
 
 def etaisyys_a_B(piste_a, joukko_B)

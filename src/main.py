@@ -36,24 +36,18 @@ def showinconsole(number):
                 print(" . ",end="")
 
 def piirra_pistejoukko(pistejoukot):
-    for numero in pistejoukot:
-        y = int(numero[0][0])
-        x = int(numero[0][1])
-        print(y,x)
-        numerostr = "." * (28 * int(numero[0][0]))
-        numerostr = numerostr + "." * int(numero[0][1])
-        numerostr = numerostr + "#"
-        for piste in range(1,len(numero)):
-            #print(numero[piste])
-            numerostr = numerostr + "." * (int(numero[piste][0]) - int(numero[piste-1][0]))
-            numerostr = numerostr + "." * (int(numero[piste][1]) - int(numero[piste-1][1]))
-            numerostr = numerostr + "#"
-        numerostr = numerostr + "." * (784-len(numerostr))
-        for char in range(0,784):
-            print(" " + numerostr[char] + " ",end="")
-            if char%28 == 0:
-                print("\n")
-#        print (pistejoukot)
+#    for numero in pistejoukot:
+#        numerostr = "." * (int(numero[0][0]) + int(numero[0][1]))
+#        numerostr = numerosrt + "#"
+#        for piste in range(1,len(numero)):
+#            numerostr = numerostr + "." * (numero[piste][0] - numero[piste-1][0])
+#            numerostr = numerostr + "." * (numero[piste][1] - numero[piste-1][1])
+#            numerostr = numerostr + "#"
+#        numerostr = numerostr + "." * 783-len(numerostr)
+#        for char in range(0,784):
+#            if char%28 == 0:
+#                numerostr.insert(numerostr[char] + "\n")
+        print (pistejoukot)
 
     
 for i in range(0, 1):

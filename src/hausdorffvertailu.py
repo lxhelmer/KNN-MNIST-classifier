@@ -1,4 +1,4 @@
-import math
+mport math
 
 def m_hausdorff_etaisyys(luokiteltava, harjoitus):
     return max(d_6(luokiteltava, harjoitus),d_6(harjoitus,luokiteltava))

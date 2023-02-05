@@ -7,7 +7,7 @@ def k_pienimmat(k, luokiteltava, harjoitusdata, harjoitusnimikkeet):
         ero = m_hausdorff_etaisyys(luokiteltava, harjoitusdata[kuva_indexi])
         vertailut[ero] = harjoitusnimikkeet[kuva_indexi]
 
-    jarjestys = sorted(vertailut.keys(),reverse=True)
+    jarjestys = sorted(vertailut.keys())
     
     maarat = {}
 
@@ -17,4 +17,4 @@ def k_pienimmat(k, luokiteltava, harjoitusdata, harjoitusnimikkeet):
         else:
             maarat[vertailut[jarjestys[i]]] += 1
     
-    yleisin = sorted
+    return maarat.keys()[maarat.values().index(max(maarat.values))]

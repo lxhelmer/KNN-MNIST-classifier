@@ -13,8 +13,14 @@ def lue_tiedostosta(file):
         luettava = reader(tiedosto)
         for rivi in luettava:
             rivilist = []
-            for entry in rivi:
-                rivilist.append(entry[1:-1].split())
+            if len(rivi[1:-1]) > 1:
+                for entry in rivi:
+                    pari = []
+                    for numero in entry[1:-1].split(", "):
+                        pari.append(int(numero))
+                    rivilist.append(pari)
+            else:
+                rivilist.append(int(rivi[0]))
             pistejoukot.append(rivilist)
 
     return pistejoukot

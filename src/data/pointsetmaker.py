@@ -17,8 +17,7 @@ def pistejoukko(mnistkuva):
     for y in range(0, 28):
         for x in range(0,28):
             if mnistkuva[y,x] != 0 and reuna(mnistkuva,y,x): 
-                    ret_pistejoukko.append((y,x))
-
+                    ret_pistejoukko.append([y,x])
 
     return ret_pistejoukko
 

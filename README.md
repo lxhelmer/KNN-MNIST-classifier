@@ -8,5 +8,6 @@ MNIST luokittelu KNN metodia käyttäen.
 
 [viikkoraportti3](https://github.com/lxhelmer/tiralabra/blob/main/viikkoraportit/viikkoraportti3.md)
 
+[viikkoraportti4](https://github.com/lxhelmer/tiralabra/blob/main/viikkoraportit/viikkoraportti4.md)
 
 [määrittelydokumentti](https://github.com/lxhelmer/tiralabra/blob/main/docs/m%C3%A4%C3%A4rittelydokumentti.md)

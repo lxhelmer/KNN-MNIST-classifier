@@ -1,8 +1,10 @@
 import os
-import matplotlib.pyplot as plt
+import time
+#import matplotlib.pyplot as plt
 import numpy as np
 import struct
-from data.pointsetmaker import pistejoukko 
+import random
+from data.pointsetmaker import pistejoukko, ruudut 
 from data.csvKaantaja import kirjoita_tiedostoon, lue_tiedostosta
 from kPienimmat import k_pienimmat
 
@@ -46,17 +48,29 @@ def piirra_pistejoukko(pistejoukko):
         xs.append(piste[1])
     plt.scatter(xs,ys)
     plt.ylim(28,0)
+    plt.xlim(0,28)
     plt.show()
 
+def piirra_ruudut(ruudut):
+    print(ruudut)
+    for y in range(0,28):
+        print("\n")
+        for x in range(0,28):
+            if ruudut[y][x] == True:
+                print(" # ", end="")
+            else:
+                print(" . ", end="")
 
-###
-    
-#for i in range(0,60000):
+
+
+
+#for i in range(0, 60000):
 #    kuvat = lataa_kuvat(harjoitus_polku)
 #    nimikkeet = lataa_nimikkeet(harjoitus_polku)
 #    showinconsole(kuvat[0,:,:])
 #    print(i)
-#    kirjoita_tiedostoon(pistejoukko(kuvat[i,:,:]),"rajat.csv")
+#    kirjoita_tiedostoon(pistejoukko(kuvat[i,:,:]),"kordinaatit.csv")
+#    kirjoita_tiedostoon(ruudut(kuvat[i,:,:]), "ruudut.csv")
 #    kirjoita_tiedostoon([nimikkeet[i]],"nimikkeet.csv")
 
 
@@ -64,30 +78,47 @@ def piirra_pistejoukko(pistejoukko):
 #piirra_pistejoukko(lue_tiedostosta("rajat.csv")[0])
     
 
-k = 5
+k = 11
 luokiteltava = pistejoukko(lataa_kuvat(testi_polku)[0])
-harjoitusdata = lue_tiedostosta("rajat.csv")
+harjoitusdata = lue_tiedostosta("kordinaatit.csv")
 harjoitusnimikkeet = lue_tiedostosta("nimikkeet.csv")
+harjoitusruudut = lue_tiedostosta("ruudut.csv")
 testinimikkeet = lataa_nimikkeet(testi_polku)
 
-print(k)
-#print(luokiteltava)
-#print(harjoitusdata)
+
 #print(harjoitusnimikkeet)
-#piirra_pistejoukko(luokiteltava)
+#showinconsole(lataa_kuvat(testi_polku)[0])
 #arvio = k_pienimmat(k, luokiteltava, harjoitusdata, harjoitusnimikkeet)
 #print(arvio)
 
 tulokset = []
+oikein = 0
+luok_num = random.randint(0,9999)
+#piirra_ruudut(harjoitusruudut[luok_num])
+#piirra_pistejoukko(pistejoukko(lataa_kuvat(testi_polku)[luok_num]))
+#print(pistejoukko(lataa_kuvat(testi_polku)[luok_num]))
+#print(testinimikkeet[20])
+for i in range(luok_num,luok_num+1):
+    luokiteltava_mnist = lataa_kuvat(testi_polku)[i]
+    luokiteltava = pistejoukko(luokiteltava_mnist)
+    print("alkaa")
+    alku_aika = time.time()
 
-for i in range(0,10):
-    luokiteltava = pistejoukko(lataa_kuvat(testi_polku)[i]) 
-    arvio = k_pienimmat(k, luokiteltava, harjoitusdata, harjoitusnimikkeet)
+    arvio = k_pienimmat(k, luokiteltava, harjoitusdata, harjoitusnimikkeet, harjoitusruudut, ruudut(luokiteltava_mnist))
+    
+    loppu_aika = time.time()
+
+    print("loppui, aika: " + str(loppu_aika - alku_aika))
     tulokset.append([arvio,testinimikkeet[i]])
+    
+    if arvio == testinimikkeet[i]:
+        oikein += 1
+
 
     print("-"*20)
-
+    #print("Tarkkuus: " + str((i+1)/oikein))
     print(i+1)
+    print("-"*20)
 
 for res in tulokset:
     print("Arvioitu luku: " + str(res[0]) + " | Todellinen luku: " + str(res[1]),end="")

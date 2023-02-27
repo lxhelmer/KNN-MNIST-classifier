@@ -1,9 +1,7 @@
-import os
 import time
-#import matplotlib.pyplot as plt
 import numpy as np
-import struct
 import random
+from lataaja import lataa_kuvat, lataa_nimikkeet
 from data.pistejoukkoGen import pistejoukko, ruudut 
 from data.csvKaantaja import CsvKaantaja
 from hausdorffvertailu import HausdorffVertailu
@@ -13,28 +11,12 @@ from ui.piirrin import Piirrin
 harjoitus_polku = "../../train/train-"
 testi_polku = "../../test/t10k-"
 
-def lataa_kuvat(polku):
-    with open(os.path.join(os.path.dirname(__file__),(polku +"images.idx3-ubyte")), 'rb') as kuvat:
-        magic, kuvat_koko = struct.unpack(">II", kuvat.read(8))
-        rivien_maara, sarakkeiden_maara = struct.unpack(">II", kuvat.read(8))
-        kuva_array = np.fromfile(kuvat, dtype=np.dtype(np.uint8).newbyteorder('>'))
-        kuva_array = kuva_array.reshape((kuvat_koko, rivien_maara, sarakkeiden_maara))
-
-    return kuva_array
-
-def lataa_nimikkeet(polku):
-    with open(os.path.join(os.path.dirname(__file__),(polku+ "labels.idx1-ubyte")), 'rb') as nimikkeet:
-        magic, nimikkeet_koko = struct.unpack(">II", nimikkeet.read(8))
-        nimike_array = np.fromfile(nimikkeet, dtype=np.dtype(np.uint8).newbyteorder('>'))
-        nimike_array = nimike_array.reshape((nimikkeet_koko,))
-
-    return nimike_array
 
 
 
 def raportti(oikein, n, i, tulokset, ruudut, aika, piirrin):
     print(">"*20)
-    piirrin.ruudut_konsolissa(ruudut)
+    
     print("Arvioon käytetty aika: " + str(aika))
     if oikein != 0:
         print("Kokonais tarkkuus: " + str(oikein/n))
@@ -49,8 +31,9 @@ def main():
     csvk = CsvKaantaja()
     piirrin = Piirrin()
 
+
+
     k = 11          # määritetään k arvo
-    luokiteltava = pistejoukko(lataa_kuvat(testi_polku)[0])
                                                                         #ladataan csv tiedostoista harjoitusdata runtime listoihin.
     harjoitusdata = csvk.lue_tiedostosta("kordinaatit.csv")             #harjoitusdata on 2D lista jossa jokainen rivi on [y,x] kordinaattipari (lista) 
     harjoitusnimikkeet = csvk.lue_tiedostosta("nimikkeet.csv")          #nimikkeet ovat normaali lista
@@ -62,14 +45,23 @@ def main():
 
     tulokset = []
     oikein = 0
-    luok_num = random.randint(0,9999)                                   #valitaan indeksi testikuvalle. Kuvien arvioinnin absoluuttinen nopeus vaihtelee
+    luok_num = 20 
+    piirrin.piirra_pistejoukko(pistejoukko(lataa_kuvat(testi_polku)[luok_num]))
+    piirrin.piirra_pistejoukko(pistejoukko(lataa_kuvat(harjoitus_polku)[luok_num-1]))
+    print(lataa_kuvat(testi_polku)[20])
+    print("---")
+    print(lataa_kuvat(harjoitus_polku)[19])
+
+    input()
+    #random.randint(0,9999)                                   #valitaan indeksi testikuvalle. Kuvien arvioinnin absoluuttinen nopeus vaihtelee
                                                                         #eri kuvien välillä joten on hyvä testata eri kuvilla.
 
 
-    for i in range(luok_num,luok_num+10):                                #arvioidaan yksi kuva, rakenne helposti muutettavissa tarkkuuden arviointiin.
+    for i in range(luok_num,luok_num+1):                                #arvioidaan yksi kuva, rakenne helposti muutettavissa tarkkuuden arviointiin.
         luokiteltava_mnist = lataa_kuvat(testi_polku)[i]                #ladataan mnist ubyte tiedostosta mnist pixeli toteutus kuvasta.
         luokiteltava = pistejoukko(luokiteltava_mnist)                  #luodaan pixelitoteutuksesta kordinaatti joukko
         luokiteltava_ruudut = ruudut(luokiteltava_mnist)
+        
 
         print("alkaa")
         alku_aika = time.time()

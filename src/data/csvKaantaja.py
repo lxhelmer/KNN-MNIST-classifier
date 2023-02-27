@@ -6,14 +6,14 @@ class CsvKaantaja:
         pass
 
     def kirjoita_tiedostoon(self,array,file):
-        with open(os.path.join("data/",file), 'a') as tiedosto:
+        with open(os.path.join(os.path.dirname(__file__),file), 'a') as tiedosto:
             kirjoitettava = writer(tiedosto)
             kirjoitettava.writerow(array)
             tiedosto.close()
 
     def lue_tiedostosta(self,file):
         pistejoukot = []
-        with open(os.path.join("data/",file), 'r') as tiedosto:
+        with open(os.path.join(os.path.dirname(__file__),file), 'r') as tiedosto:
             luettava = reader(tiedosto)
             for rivi in luettava:
                 rivilist = []

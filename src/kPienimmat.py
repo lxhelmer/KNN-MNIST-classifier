@@ -10,11 +10,7 @@ class KPienimmat:
             if kuva_indeksi%1000 == 0:  #ohjelman etenemisen varmistamiseksi sekä silmämääräisen nopeuden arvioimiseksi
                 print(kuva_indeksi)
 
-            ero = self._hausdorff_etaisyys(luokiteltava, harjoitusdata[kuva_indeksi], ruudut_harjoitus[kuva_indeksi], ruudut_luokiteltava)
-
-            if kuva_indeksi == 19:
-                print("Käsinlasketun parin test 20, harj 19 ero " + str(ero))
-                input()
+            ero = self._hausdorff_etaisyys(luokiteltava, harjoitusdata[kuva_indeksi],ruudut_luokiteltava, ruudut_harjoitus[kuva_indeksi])
 
             arvio_keko.append((ero, (harjoitusnimikkeet[kuva_indeksi][0])))
             

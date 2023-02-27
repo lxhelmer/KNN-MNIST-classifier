@@ -46,18 +46,14 @@ def main():
     tulokset = []
     oikein = 0
     luok_num = 20 
-    piirrin.piirra_pistejoukko(pistejoukko(lataa_kuvat(testi_polku)[luok_num]))
-    piirrin.piirra_pistejoukko(pistejoukko(lataa_kuvat(harjoitus_polku)[luok_num-1]))
-    print(lataa_kuvat(testi_polku)[20])
-    print("---")
-    print(lataa_kuvat(harjoitus_polku)[19])
+    #piirrin.piirra_pistejoukko(pistejoukko(lataa_kuvat(testi_polku)[luok_num]))
+    #piirrin.piirra_pistejoukko(pistejoukko(lataa_kuvat(harjoitus_polku)[luok_num-1]))
 
-    input()
     #random.randint(0,9999)                                   #valitaan indeksi testikuvalle. Kuvien arvioinnin absoluuttinen nopeus vaihtelee
                                                                         #eri kuvien välillä joten on hyvä testata eri kuvilla.
 
 
-    for i in range(luok_num,luok_num+1):                                #arvioidaan yksi kuva, rakenne helposti muutettavissa tarkkuuden arviointiin.
+    for i in range(luok_num,luok_num+11):                                #arvioidaan yksi kuva, rakenne helposti muutettavissa tarkkuuden arviointiin.
         luokiteltava_mnist = lataa_kuvat(testi_polku)[i]                #ladataan mnist ubyte tiedostosta mnist pixeli toteutus kuvasta.
         luokiteltava = pistejoukko(luokiteltava_mnist)                  #luodaan pixelitoteutuksesta kordinaatti joukko
         luokiteltava_ruudut = ruudut(luokiteltava_mnist)
@@ -81,6 +77,7 @@ def main():
         
         if arvio == testinimikkeet[i]:
             oikein += 1
+
 
         raportti(oikein, i-luok_num+1, i, tulokset, luokiteltava_ruudut, loppu_aika-alku_aika, piirrin)
 

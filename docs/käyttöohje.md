@@ -34,4 +34,7 @@ Ohjelma tulostaa jokaiselle kuvalle listan
 (a<sub>1</sub>,a<sub>2</sub>,a<sub>3</sub>,a<sub>4</sub>,a<sub>5</sub>,a<sub>6</sub>,a<sub>7</sub>,a<sub>8</sub>,a<sub>9</sub>,a<sub>10</sub>)
 
 missä a<sub>n</sub> kertoo n numeroa esittävien kuvien määrän 11 lähiten testikuvaa vastaavan kuvan joukossa. Tästä näkee kuinka varma arvio oli. 
-Lisäksi tulostetaan arvioiden yhteen laskettu tarkkuus. $$ oikeat arviot \over kaikki arviot $$
+Lisäksi tulostetaan arvioiden yhteen laskettu tarkkuus. 
+```math
+oikeat arvio \over kaikki arviot
+

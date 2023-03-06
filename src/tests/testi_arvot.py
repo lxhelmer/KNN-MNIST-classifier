@@ -10,7 +10,7 @@ A_mnist = lataa_kuvat(testi_polku)[20]
 B_mnist = lataa_kuvat(harjoitus_polku)[19]
         
 
-A_pisteet = [       #test20
+A_pisteet = np.array([       #test20
     [6, 15], [6, 16], [6, 17], [6, 18],
     [7, 13], [7, 14], [7, 15], [7, 16], [7, 17], [7, 18], [7, 19], [7, 20], [7, 21],
     [8, 11], [8, 12], [8, 13], [8, 14], [8, 15], [8, 16], [8, 17], [8, 18], [8, 19], [8, 20], [8, 21], [8, 22],
@@ -31,9 +31,9 @@ A_pisteet = [       #test20
     [23, 9], [23, 10], [23, 11], [23, 12], [23, 13], [23, 14],
     [24, 9], [24, 10], [24, 11], [24, 12], [24, 13],
     [25, 9], [25, 10], [25, 11], [25, 12]
-    ]
+    ])
 
-B_pisteet = [       #harj19
+B_pisteet = np.array ([       #harj19
     [7, 13], [7, 14], [7, 15], [7, 16], [7, 17], [7, 18],
     [8, 12], [8, 13], [8, 14], [8, 15], [8, 16], [8, 17], [8, 18], [8, 19],
     [9, 11], [9, 12], [9, 13], [9, 14], [9, 15], [9, 16], [9, 17], [9, 18], [9, 19], [9, 20],
@@ -53,9 +53,10 @@ B_pisteet = [       #harj19
     [23, 9], [23, 10], [23, 11], [23, 12],
     [24, 8], [24, 9], [24, 10], [24, 11],
     [25, 8], [25, 9], [25, 10], [25, 11],
-    [26, 7], [26, 8], [26, 9], [26, 10]]
+    [26, 7], [26, 8], [26, 9], [26, 10]
+    ])
 
-A_ruudut = [
+A_ruudut = np.array([
     [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False],
     [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False],
     [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False],
@@ -83,9 +84,10 @@ A_ruudut = [
     [False, False, False, False, False, False, False, False, False, True, True, True, True, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False],
     [False, False, False, False, False, False, False, False, False, True, True, True, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False],
     [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False],
-    [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False]]
+    [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False]
+    ])
 
-B_ruudut = [
+B_ruudut = np.array([
     [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False],
     [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False],
     [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False],
@@ -113,4 +115,5 @@ B_ruudut = [
     [False, False, False, False, False, False, False, False, True, True, True, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False],
     [False, False, False, False, False, False, False, False, True, True, True, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False],
     [False, False, False, False, False, False, False, True, True, True, True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False],
-    [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False]]
+    [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False]
+    ])

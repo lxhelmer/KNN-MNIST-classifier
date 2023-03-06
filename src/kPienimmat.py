@@ -6,13 +6,14 @@ class KPienimmat:
 
     def k_pienimmat(self, k, luokiteltava, harjoitusdata, harjoitusnimikkeet, ruudut_harjoitus, ruudut_luokiteltava):
         arvio_keko = []
-        for kuva_indeksi in range(0,6000):
+
+        for kuva_indeksi in range(0,60000):
             if kuva_indeksi%1000 == 0:  #ohjelman etenemisen varmistamiseksi sekä silmämääräisen nopeuden arvioimiseksi
                 print(kuva_indeksi)
 
             ero = self._hausdorff_etaisyys(luokiteltava, harjoitusdata[kuva_indeksi],ruudut_luokiteltava, ruudut_harjoitus[kuva_indeksi])
 
-            arvio_keko.append((ero, (harjoitusnimikkeet[kuva_indeksi][0])))
+            arvio_keko.append((ero, (harjoitusnimikkeet[kuva_indeksi])))
             
         heapq.heapify(arvio_keko)
         yleisimmat = []

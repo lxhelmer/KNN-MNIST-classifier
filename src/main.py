@@ -53,11 +53,10 @@ def main():
 
     testinimikkeet = lataa_nimikkeet(testi_polku)                       #ladataan testinimikkeet normaali lista
     print("Testi nimikkeet ladattu") 
-    input()
 
     tulokset = []
     oikein = 0
-    luok_num = 20 
+    luok_num = random.randint(0,9980) 
     #piirrin.piirra_pistejoukko(pistejoukko(lataa_kuvat(testi_polku)[luok_num]))
     #piirrin.piirra_pistejoukko(pistejoukko(lataa_kuvat(harjoitus_polku)[luok_num-1]))
 
@@ -74,6 +73,7 @@ def main():
         print("alkaa")
         alku_aika = time.time()
 
+        
         arvio = knn.k_pienimmat(                                        #arvioidaan luokiteltavan kuvan nimike
                 k,
                 luokiteltava,

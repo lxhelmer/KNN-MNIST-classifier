@@ -33,7 +33,7 @@ def main():
 
 
 
-    k = 11   # määritetään k arvo
+    k = 22   # määritetään k arvo
     print("aloitetaan")
     harjoitus_mnist = lataa_kuvat(harjoitus_polku)
     print("harjoitus MNIST ladattu")
@@ -56,19 +56,18 @@ def main():
 
     tulokset = []
     oikein = 0
-    luok_num = random.randint(0,9980) 
-    #piirrin.piirra_pistejoukko(pistejoukko(lataa_kuvat(testi_polku)[luok_num]))
-    #piirrin.piirra_pistejoukko(pistejoukko(lataa_kuvat(harjoitus_polku)[luok_num-1]))
-
+    #luok_num = random.randint(0,9980) 
+    luok_num = 20
     #random.randint(0,9999)                                   #valitaan indeksi testikuvalle. Kuvien arvioinnin absoluuttinen nopeus vaihtelee
                                                        #eri kuvien välillä joten on hyvä testata eri kuvilla.
+    harjoitusdata = harjoitusdata.tolist()
+    harjoitusruudut = harjoitusruudut.tolist()
 
-
-    for i in range(luok_num,luok_num+11):                                #arvioidaan yksi kuva, rakenne helposti muutettavissa tarkkuuden arviointiin.
+    for i in range(luok_num,luok_num+10):                                #arvioidaan yksi kuva, rakenne helposti muutettavissa tarkkuuden arviointiin.
         luokiteltava_mnist = testidata[i]                #ladataan mnist ubyte tiedostosta mnist pixeli toteutus kuvasta.
-        luokiteltava = pistejoukko(luokiteltava_mnist)                  #luodaan pixelitoteutuksesta kordinaatti joukko
-        luokiteltava_ruudut = ruudut(luokiteltava_mnist)
-        
+        luokiteltava = pistejoukko(luokiteltava_mnist).tolist()                 #luodaan pixelitoteutuksesta kordinaatti joukko
+        luokiteltava_ruudut = ruudut(luokiteltava_mnist).tolist()
+
 
         print("alkaa")
         alku_aika = time.time()
@@ -82,14 +81,7 @@ def main():
                 harjoitusruudut,
                 luokiteltava_ruudut
                 )                                                       
-        # arvio = knn.k_pienimmat(                                        #arvioidaan luokiteltavan kuvan nimike
-        #         k,
-        #         luokiteltava.tolist(),
-        #         harjoitusdata.tolist(),
-        #         harjoitusnimikkeet.tolist(),
-        #         harjoitusruudut.tolist(),
-        #         luokiteltava_ruudut.tolist()
-        #         )                                                       
+                                                           
         
         loppu_aika = time.time()
 

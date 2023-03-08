@@ -1,10 +1,14 @@
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+# pylint: disable = invalid-name
 
 class Piirrin:
     def __init__(self):
         pass
 
-    def mnist_konsolissa(self,mnist_numero):     #Mnist pikseliesityksen (2D lista arvoja 0-255) näyttäminen konsolissa. Toimii vian numpy arraylle.
+    #Mnist pikseliesityksen (2D lista arvoja 0-255) näyttäminen konsolissa.
+    #Toimii vain numpy arraylle.
+    def mnist_konsolissa(self,mnist_numero):
         print("")
         print("".join(["---"*28]))
         for y in range(0,28):
@@ -16,7 +20,8 @@ class Piirrin:
                     print(" . ",end="")
         print("loppui")
 
-    def piirra_pistejoukko(self,pistejoukko):    #Yhden numeron kuvaa kuvaavan kordinaatti joukon esittäminen konsolissa
+    #Yhden numeron kuvaa kuvaavan kordinaatti joukon esittäminen konsolissa
+    def piirra_pistejoukko(self,pistejoukko):
         xs = []
         ys = []
         for piste in pistejoukko:
@@ -27,11 +32,12 @@ class Piirrin:
         plt.xlim(0,28)
         plt.show()
 
-    def ruudut_konsolissa(self,ruudut):          #2D totuus taulun esittäminen graafisesti konsolissa
+    #2D totuus taulun esittäminen graafisesti konsolissa
+    def ruudut_konsolissa(self,ruudut):
         for y in range(0,28):
             print("\n")
             for x in range(0,28):
-                if ruudut[y][x] == True:
+                if ruudut[y][x] is True:
                     print(" # ", end="")
                 else:
                     print(" . ", end="")

@@ -2,97 +2,95 @@ import time
 import numpy as np
 import random
 from lataaja import lataa_kuvat, lataa_nimikkeet
-from data.pistejoukkoGen import pistejoukko, ruudut 
-from data.csvKaantaja import CsvKaantaja
+from data.pistejoukko_gen import pistejoukko, ruudut
 from hausdorffvertailu import HausdorffVertailu
-from kPienimmat import KPienimmat
+from klahimmat import KLahimmat
 from ui.piirrin import Piirrin
 
-harjoitus_polku = "../../train/train-"
-testi_polku = "../../test/t10k-"
+HARJOITUS_POLKU = "../../train/train-"
+TESTI_POLKU = "../../test/t10k-"
+PIIRRIN = Piirrin()
+HAUSDORFF = HausdorffVertailu()
+KNN = KLahimmat(HAUSDORFF)
 
 
-
-
-def raportti(oikein, n, i, tulokset, ruudut, aika, piirrin):
+def raportti(oikein, yhteensa, tulokset,luok_ruudut, aika):
     print(">"*20)
-    
+    print("Arvio: ", str(yhteensa))
     print("Arvioon käytetty aika: " + str(aika))
     if oikein != 0:
-        print("Kokonais tarkkuus: " + str(oikein/n))
-    print("Arvio: " + str(tulokset[n-1][0]))
-    print("Todellinen: " + str(tulokset[n-1][1]))
+        print("Kokonais tarkkuus: " + str(oikein/yhteensa))
+    print("Arvio: " + str(tulokset[yhteensa-1][0]))
+    print("Todellinen: " + str(tulokset[yhteensa-1][1]))
     print("<"*20)
 
-    
+
 def main():
-    hausdorff = HausdorffVertailu()
-    knn = KPienimmat(hausdorff)
-    csvk = CsvKaantaja()
-    piirrin = Piirrin()
 
-
-
-    k = 22   # määritetään k arvo
+    k = 21   # määritetään k arvo
     print("aloitetaan")
-    harjoitus_mnist = lataa_kuvat(harjoitus_polku)
+    harjoitus_mnist = lataa_kuvat(HARJOITUS_POLKU)
     print("harjoitus MNIST ladattu")
-                                                                        #ladataan csv tiedostoista harjoitusdata runtime listoihin.
-    harjoitusdata = np.array([pistejoukko(x) for x in harjoitus_mnist],dtype=object) #harjoitusdata on 2D Numpy array 
-                                                                                        #jossa jokainen rivi on yksi kordinaattijoukko
+
+    #harjoitusdata on 2D Numpy array
+    #jossa jokainen rivi on yksi kordinaattijoukko
+    harjoitusdata = np.array(
+            [pistejoukko(x) for x in harjoitus_mnist],
+            dtype=object)
     print("Harjoitus pistejoukot luotu")
 
-    harjoitusnimikkeet = lataa_nimikkeet(harjoitus_polku)               #nimikkeet ovat 1D Numpy array
+    #nimikkeet ovat 1D Numpy array
+    harjoitusnimikkeet = lataa_nimikkeet(HARJOITUS_POLKU)
     print("Harjoitus nimikkeet ladattu")
 
-    harjoitusruudut = np.array([ruudut(x) for x in harjoitus_mnist])    #ruudut ovat 3D-Numpy array jossa jokainen rivi sisältää 28x28 2D Numpy arrayn 
+    #ruudut ovat 3D-Numpy array
+    #jossa jokainen rivi sisältää 28x28 2D Numpy arrayn
+    harjoitusruudut = np.array(
+            [ruudut(x) for x in harjoitus_mnist])
     print("Harjoitus ruudut luotu")
-                                                                        #tämä 2D listan kohdassa [y][x] on kyseisen pisteen pixelin totuusarvo(boolean)
-    testidata = lataa_kuvat(testi_polku)
+
+    testidata = lataa_kuvat(TESTI_POLKU)
     print("Testidata ladattu")
 
-    testinimikkeet = lataa_nimikkeet(testi_polku)                       #ladataan testinimikkeet normaali lista
-    print("Testi nimikkeet ladattu") 
+    testinimikkeet = lataa_nimikkeet(TESTI_POLKU)   #ladataan testinimikkeet normaali lista
+    print("Testi nimikkeet ladattu")
 
     tulokset = []
     oikein = 0
-    #luok_num = random.randint(0,9980) 
+    #luok_num = random.randint(0,9980)
     luok_num = 20
-    #random.randint(0,9999)                                   #valitaan indeksi testikuvalle. Kuvien arvioinnin absoluuttinen nopeus vaihtelee
-                                                       #eri kuvien välillä joten on hyvä testata eri kuvilla.
     harjoitusdata = harjoitusdata.tolist()
     harjoitusruudut = harjoitusruudut.tolist()
 
-    for i in range(luok_num,luok_num+10):                                #arvioidaan yksi kuva, rakenne helposti muutettavissa tarkkuuden arviointiin.
-        luokiteltava_mnist = testidata[i]                #ladataan mnist ubyte tiedostosta mnist pixeli toteutus kuvasta.
-        luokiteltava = pistejoukko(luokiteltava_mnist).tolist()                 #luodaan pixelitoteutuksesta kordinaatti joukko
+    for i in range(luok_num,luok_num+100):
+        luokiteltava_mnist = testidata[i]
+        luokiteltava = pistejoukko(luokiteltava_mnist).tolist() #luodaan pixelitoteutuksesta kordinaatti joukko
         luokiteltava_ruudut = ruudut(luokiteltava_mnist).tolist()
 
 
         print("alkaa")
         alku_aika = time.time()
 
-        
-        arvio = knn.k_pienimmat(                                        #arvioidaan luokiteltavan kuvan nimike
+
+        arvio = KNN.k_lahimmat(                                        #arvioidaan luokiteltavan kuvan nimike
                 k,
                 luokiteltava,
                 harjoitusdata,
                 harjoitusnimikkeet,
                 harjoitusruudut,
                 luokiteltava_ruudut
-                )                                                       
-                                                           
-        
+                )
+
         loppu_aika = time.time()
 
-        
+
         tulokset.append([arvio,testinimikkeet[i]])
-        
+
         if arvio == testinimikkeet[i]:
             oikein += 1
 
 
-        raportti(oikein, i-luok_num+1, i, tulokset, luokiteltava_ruudut, loppu_aika-alku_aika, piirrin)
+        raportti(oikein, i-luok_num+1, tulokset, luokiteltava_ruudut, loppu_aika-alku_aika)
 
     for res in tulokset:
         print("Arvioitu luku: " + str(res[0]) + " | Todellinen luku: " + str(res[1]),end="")
@@ -105,5 +103,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-

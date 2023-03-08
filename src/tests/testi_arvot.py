@@ -1,14 +1,15 @@
-import numpy as np 
+import numpy as np
 from lataaja import lataa_kuvat
 
+# pylint: disable=line-too-long
 
 
-harjoitus_polku = "../../train/train-"
-testi_polku = "../../test/t10k-"
+HARJOITUS_POLKU = "../../train/train-"
+TESTI_POLKU = "../../test/t10k-"
 
-A_mnist = lataa_kuvat(testi_polku)[20]
-B_mnist = lataa_kuvat(harjoitus_polku)[19]
-        
+A_mnist = lataa_kuvat(TESTI_POLKU)[20]
+B_mnist = lataa_kuvat(HARJOITUS_POLKU)[19]
+
 
 A_pisteet = np.array([       #test20
     [6, 15], [6, 16], [6, 17], [6, 18],

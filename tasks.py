@@ -14,7 +14,7 @@ def lint(ctx):
 
 @task
 def coverage(ctx):
-    ctx.run("poetry run coverage", pty=True)
+    ctx.run("poetry run coverage run --branch -m pytest", pty=True)
 
 @task(coverage)
 def coverage_report(ctx):

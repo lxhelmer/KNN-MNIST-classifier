@@ -2,6 +2,8 @@ import struct
 import os
 import numpy as np
 
+#Yksinkertainen työkaluluokka jolla ladataan mnist data suorituksen aikaisiin
+#muuttujiin.
 
 def lataa_kuvat(polku):
     with open(os.path.join(os.path.dirname(__file__),(polku +"images.idx3-ubyte")), 'rb') \

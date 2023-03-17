@@ -32,7 +32,7 @@ class Piirrin:
         plt.xlim(0,28)
         plt.show()
 
-    #2D totuus taulun esittäminen graafisesti konsolissa
+    #2D totuustaulun esittäminen graafisesti konsolissa
     def ruudut_konsolissa(self,ruudut):
         for y in range(0,28):
             print("\n")

@@ -12,10 +12,12 @@ class HausdorffVertailu:
         luokiteltava_harjoitus = self.d_6(luokiteltava, harjoitus, ruudut_harjoitus)
         harjoitus_luokiteltava = self.d_6(harjoitus,luokiteltava, ruudut_luokiteltava)
 
-        return max(luokiteltava_harjoitus ,harjoitus_luokiteltava)
-        #vertaillaan molempiin suuntiin
+        return max(luokiteltava_harjoitus ,harjoitus_luokiteltava) #vertaillaan molempiin suuntiin
 
-
+    #Koska koodia käytetään jokaisen luokittelun kohdalla polempiin suuntiin
+    #Luokiteltava-Harjoitus, siirryin tässä kohdassa vähemmän kuvaaviin mutta loogisesti yhdenmukaisiin
+    #muuttuja nimiin. Muuttujat sekä funktiot myös vastaavat lähdemateriaalin kaavoja mikä helpottaa koodin
+    #ymmärtämistä.
     def etaisyys_a_B(self, piste_a, joukko_B, ruudut_B):
         minimi = 1600
         aY = piste_a[0]
@@ -51,7 +53,9 @@ class HausdorffVertailu:
                 (2,3) : math.sqrt(13)
 
                 }
-
+        #Käydään kordinaattien mukaisia ruutuja läpi totuustauluesityksestä. 
+        #Järjestys on kasvava joten pisteen löytyessä voidaan kordinaatteja vastaava etäisyys
+        #hakea etaisyydet dictistä ja palauttaa sillä sen tiedetään olevan pienin.
         for kordinaatti in kordinaatit:
             if  aY+kordinaatti[0] >= 0 and aY+kordinaatti[0] <= 27 and \
                 aX+kordinaatti[1] >= 0 and aX+kordinaatti[1] <= 27:
@@ -61,13 +65,13 @@ class HausdorffVertailu:
 
         for piste_b in joukko_B:
             arvo = (piste_a[0]-piste_b[0])**2 + (piste_a[1]-piste_b[1])**2
-
+            
+            #Koska kaikki tätä pienemmät arvon on läpikäyty voidaan tällä tuloksella pysäyttää etsiminen.
             if arvo == 18:
                 return math.sqrt(18)
 
             if arvo < minimi:
                 minimi = arvo
-
 
 
         return math.sqrt(minimi)

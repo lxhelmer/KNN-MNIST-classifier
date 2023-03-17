@@ -18,6 +18,10 @@ tira
     └── src
 ```
 
+Asenna ohjelman vaatimat riippuvuudet poetryllä
+
+```shell poetry install```
+
 Ohjelman käyttämistä helpottaa poetryn virtuaaliympäristön käyttö. Sen voi ottaa käyttöön komennolla:
 
 ```shell poetry shell```

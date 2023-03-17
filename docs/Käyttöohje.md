@@ -44,7 +44,6 @@ Ohjelman testikattavuuden voi tarkistaa komennolla:
 
 Kun ohjelmaa käytetään poetry virtuaaliympäristössä "poetry run" osa ei ole välttämätön. 
 
-Ohjelma valitsee 10 satunnaista kuvaa testi sarjasta joiden esittämän numeron se luokittelee. 
 
 Ohjelma tulostaa jokaiselle kuvalle listan
 
@@ -52,3 +51,5 @@ Ohjelma tulostaa jokaiselle kuvalle listan
 
 missä a<sub>n</sub> kertoo n numeroa esittävien kuvien määrän k lähiten testikuvaa vastaavan kuvan joukossa. Tästä näkee kuinka varma arvio oli. 
 Lisäksi tulostetaan arvioiden yhteen laskettu tarkkuus siihen asti.
+
+Lopuksi ohjelma tulostaa kootun listan kuvien esittämistä numeroista sekä algoritmin niille antamista luokitteluista

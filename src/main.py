@@ -16,6 +16,7 @@ KNN = KLahimmat(HAUSDORFF)
 
 def raportti(oikein, yhteensa, tulokset,luok_ruudut, aika):
     print(">"*20)
+    PIIRRIN.ruudut_konsolissa(luok_ruudut)
     print("Arvio: ", str(yhteensa))
     print("Arvioon käytetty aika: " + str(aika))
     if oikein != 0:
@@ -26,8 +27,17 @@ def raportti(oikein, yhteensa, tulokset,luok_ruudut, aika):
 
 
 def main():
+    
+    while True:
+        try:
+            k = int(input("syötä haluttu k: "))   # määritetään k arvo
+            maara = int(input("syötä luokiteltavien kuvien määrä: "))
+            luok_num = int(input("syötä aloitus indeksi: "))
+            break
+        except ValueError:
+            print("Syötä vain numeroita!")
+            continue
 
-    k = 21   # määritetään k arvo
     print("aloitetaan")
     harjoitus_mnist = lataa_kuvat(HARJOITUS_POLKU)
     print("harjoitus MNIST ladattu")
@@ -56,17 +66,15 @@ def main():
     print("Testi nimikkeet ladattu")
 
     tulokset = []
-    oikein = 0
-    #luok_num = random.randint(0,9980)
-    luok_num = 20
     harjoitusdata = harjoitusdata.tolist()
     harjoitusruudut = harjoitusruudut.tolist()
+    kaikki = 0
+    oikein = 0
 
-    for i in range(luok_num,luok_num+100):
+    for i in range(luok_num,luok_num+maara):
         luokiteltava_mnist = testidata[i]
         luokiteltava = pistejoukko(luokiteltava_mnist).tolist() #luodaan pixelitoteutuksesta kordinaatti joukko
         luokiteltava_ruudut = ruudut(luokiteltava_mnist).tolist()
-
 
         print("alkaa")
         alku_aika = time.time()
@@ -88,9 +96,9 @@ def main():
 
         if arvio == testinimikkeet[i]:
             oikein += 1
-
-
-        raportti(oikein, i-luok_num+1, tulokset, luokiteltava_ruudut, loppu_aika-alku_aika)
+        kaikki += 1
+        
+        raportti(oikein, kaikki, tulokset, luokiteltava_ruudut, loppu_aika-alku_aika)
 
     for res in tulokset:
         print("Arvioitu luku: " + str(res[0]) + " | Todellinen luku: " + str(res[1]),end="")

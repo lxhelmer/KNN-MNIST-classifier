@@ -12,7 +12,7 @@ class KLahimmat:
         self._harjoitusnimikkeet = None
         self._ruudut_harjoitus = None
         self._ruudut_luokiteltava = None
-        self.lista_ctrl = Manager()
+        self._lista_ctrl = Manager()
         self.prosessi_lista = None
 
     #Hd etäisyyksiä laskeva funktio jota prosessit ajavat eri väleillä.
@@ -23,6 +23,20 @@ class KLahimmat:
                                            self._ruudut_luokiteltava,
                                            self._ruudut_harjoitus[kuva_indeksi])
             self.prosessi_lista.append((ero, (self._harjoitusnimikkeet[kuva_indeksi])))
+    def knn_jarj(self, arvo_parit,k):
+        heapq.heapify(arvo_parit)
+        yleisimmat = []
+        yleisyys = [0,0,0,0,0,0,0,0,0,0]
+
+        for i in range(0, k):
+            minimi = heapq.heappop(arvo_parit)
+            yleisimmat.append(minimi)
+            yleisyys[minimi[1]] = yleisyys[minimi[1]] + 1
+            print(minimi) #n pienin pari etäisyyden nousevassa järjestyksessä
+
+
+        print(yleisyys) #lista 0-9 arvojen määrästä
+        return yleisyys
 
     def k_lahimmat(self,k, luokiteltava,
                     harjoitusdata, harjoitusnimikkeet,
@@ -33,7 +47,7 @@ class KLahimmat:
         self._harjoitusnimikkeet = harjoitusnimikkeet
         self._ruudut_harjoitus = ruudut_harjoitus
         self._ruudut_luokiteltava = ruudut_luokiteltava
-        self.prosessi_lista = self.lista_ctrl.list()
+        self.prosessi_lista = self._lista_ctrl.list()
 
         prosessit(60000, self.hd_kutsuja)
 
@@ -41,25 +55,13 @@ class KLahimmat:
 
         knn_alku = time.time()
 
-        heapq.heapify(keko_lista)
-        yleisimmat = []
-        yleisyys = [0,0,0,0,0,0,0,0,0,0]
+        self.yleisyys = self.knn_jarj(keko_lista,k)
+        maksimi_maara = max(self.yleisyys)
 
-        for i in range(0, k):
-            minimi = heapq.heappop(keko_lista)
-            yleisimmat.append(minimi)
-            yleisyys[minimi[1]] = yleisyys[minimi[1]] +1
-            print(minimi) #n pienin pari etäisyyden nousevassa järjestyksessä
-
-
-        print(yleisyys) #lista 0-9 arvojen määrästä
-        
-        maksimi = max(yleisyys)
-        yleisin = yleisyys.index(maksimi) #indeksi 0-9 jolla on korkein määrä
-
+        yleisin = self.yleisyys.index(maksimi_maara) #indeksi 0-9 jolla on korkein määrä
 
         knn_loppu = time.time()
         print("knn sort time: " + str(knn_loppu-knn_alku))
-        print("Varmuus: ", str(maksimi/k))
+        print("Varmuus: ", str(maksimi_maara/k))
 
         return yleisin

@@ -27,3 +27,5 @@ Mahdollisesti parempi tapa kuvata aikavaativuutta on O(n*d) + O(k log n) missä 
 vertailtavien objektien tai yksittäisten vertailtavien ominaisuuksien määrä. Nämä muuttujat ovat kuitenkin mnist datan kohdalla vakiot joten tällainen
 merkintä olisi siinä mielessä virheellinen. 
 
+Lähteenä projektille käytin [A Modified Hausdorff Distance for Object Matching](https://citeseerx.ist.psu.edu/doc/10.1.1.1.8155) paperia. Tosin kuvat paperista poiketen eivät olleet 'edge map' muodossa.
+

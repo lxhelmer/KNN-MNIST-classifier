@@ -1,5 +1,5 @@
 Ohjelma koostuu kahdesta pääluokasta ja näitä tukevista apufunktioista. Apufunktioina on toteutettu sellaiset ohjelman osat joiden käyttäminen
-luokkainstansseina olisi ollut luettavuuden kannalta merkittävästi heikompi ratkaisu. Tällaisia ovat esimerkiski mnist datan muokkaamiseen käytetyt
+luokkainstansseina olisi ollut luettavuuden ja toimintalogiikan kannalta merkittävästi heikompi ratkaisu. Tällaisia ovat esimerkiski mnist datan muokkaamiseen käytetyt
 funktiot.
 
 ![image](https://user-images.githubusercontent.com/49132322/225993774-6a0ebc6d-2a50-4ae9-a9b7-e1989bf62206.png)

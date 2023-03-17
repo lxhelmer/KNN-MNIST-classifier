@@ -11,4 +11,4 @@ esitysmuotojen generoiminen oikein. Tätä varten tarkistin näille tapauksille 
 
 Lisäksi toteutin testausta joka tutkii koko algoritmin toimintaa kun luokitellaan testijoukon tunnettua kuvaa numero 20. Tämä testaaminen on varsin hidasta
 sillä koko algoritmi suoritetaan kerran. Tällä kuitenkin saadaan testattua antaako algoritmi oikean luokitelman arvolle joka on ennen optimointia
-luokiteltu oikein sekä onko luokittelun "varmuus" muuttunut.
+luokiteltu oikein sekä onko luokittelun "varmuus" muuttunut. Testien suorittaminen vie noin minuutin.

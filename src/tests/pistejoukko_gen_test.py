@@ -3,6 +3,7 @@ import numpy as np
 from data.pistejoukko_gen import pistejoukko, ruudut
 from tests.testi_arvot import A_mnist, A_pisteet, A_ruudut, B_mnist, B_pisteet, B_ruudut
 
+# pylint: disable=C0103
 
 class TestPistejoukko(unittest.TestCase):
 
@@ -17,4 +18,3 @@ class TestPistejoukko(unittest.TestCase):
 
     def test_ruudut_B(self):
         np.testing.assert_array_equal(ruudut(B_mnist), B_ruudut)
-

@@ -1,13 +1,14 @@
 import unittest
+import numpy as np
 from klahimmat import KLahimmat
 from hausdorffvertailu import HausdorffVertailu
 from lataaja import lataa_kuvat, lataa_nimikkeet
 from data.pistejoukko_gen import pistejoukko, ruudut
-import numpy as np
 import tests.testi_arvot as arvot
 
 
 class TestKNN(unittest.TestCase):
+
 
     def setUp(self):
         HV = HausdorffVertailu()
@@ -40,7 +41,7 @@ class TestKNN(unittest.TestCase):
                       (0.5,5),(0.6,6),(0.7,7),(0.8,8),
                       (0.9,9),(0.01,0)]
         self.assertEqual(self.tester_knn.knn_jarjestaja(test_array,4),[1,3,0,0,0,0,0,0,0,0])
-    
+
     def test_knn_sama(self):
         test_array = [(0.1,1),(0.2,1),(0.3,1),(0.4,1),
                       (0.1,5),(0.6,6),(0.7,7),(0.8,8),
@@ -55,7 +56,7 @@ class TestKNN(unittest.TestCase):
         test_kuvat = np.array(
             [pistejoukko(x) for x in lataa_kuvat(arvot.HARJOITUS_POLKU)],
             dtype=object)
-        test_ruud = harjoitusruudut = np.array(
+        test_ruud = np.array(
             [ruudut(x) for x in lataa_kuvat(arvot.HARJOITUS_POLKU)])
         test_nimik = lataa_nimikkeet(arvot.HARJOITUS_POLKU)
 
@@ -65,7 +66,3 @@ class TestKNN(unittest.TestCase):
                 )
         self.assertEqual(test_arvio,9)
         self.assertEqual(self.tester_knn.yleisyys,[0,0,0,0,0,0,0,0,0,7])
-
-
-
-        

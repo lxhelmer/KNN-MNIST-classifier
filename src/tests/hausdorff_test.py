@@ -3,13 +3,13 @@ from tests.testi_arvot import A_pisteet, B_pisteet, A_ruudut, B_ruudut
 from hausdorffvertailu import HausdorffVertailu
 import math
 import numpy as np
-from data.pistejoukko_gen import ruudut
+
+# pylint: disable=C0103
 
 class TestHausdorff(unittest.TestCase):
     def setUp(self):
         self.test_hausdorff = HausdorffVertailu()
 
-    
     def test_hausdorff_etaisyys(self):
         laskettu_etaisyys = 0.54655546181586
         test_etaisyys = self.test_hausdorff.m_hausdorff_etaisyys(A_pisteet, B_pisteet,
@@ -29,7 +29,7 @@ class TestHausdorff(unittest.TestCase):
                 ruudut_test_A,ruudut_test_A
                 )
 
-        self.assertEqual(test_etaisyys, 0) 
+        self.assertEqual(test_etaisyys, 0)
 
     def test_hausdorff_yhdenero(self):
         test_A = np.array([[1,1],[2,2],[3,3]])
@@ -49,4 +49,4 @@ class TestHausdorff(unittest.TestCase):
                 test_A,test_B,
                 ruudut_test_A,ruudut_test_B
                 )
-        self.assertEqual(test_etaisyys, math.sqrt(2)/3) 
+        self.assertEqual(test_etaisyys, math.sqrt(2)/3)

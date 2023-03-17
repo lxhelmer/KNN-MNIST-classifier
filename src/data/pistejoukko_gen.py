@@ -1,7 +1,7 @@
 import numpy as np
 
 #Yksinkertainen työkaluluokka joka muuttaa numpy array muodossa
-#olevan mnist tiedon tehokkaasti haluttuun esitysmuotoon, joko 
+#olevan mnist tiedon tehokkaasti haluttuun esitysmuotoon, joko
 #kordinaattijoukoksi tai y,x totuustauluksi
 
 def pistejoukko(mnistkuva):

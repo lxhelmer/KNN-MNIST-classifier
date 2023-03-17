@@ -1,5 +1,4 @@
 import math
-import numpy as np
 from scipy.spatial.distance import cdist
 
 # pylint: disable=C0103
@@ -53,7 +52,7 @@ class HausdorffVertailu:
                 (2,3) : math.sqrt(13)
 
                 }
-        #Käydään kordinaattien mukaisia ruutuja läpi totuustauluesityksestä. 
+        #Käydään kordinaattien mukaisia ruutuja läpi totuustauluesityksestä.
         #Järjestys on kasvava joten pisteen löytyessä voidaan kordinaatteja vastaava etäisyys
         #hakea etaisyydet dictistä ja palauttaa sillä sen tiedetään olevan pienin.
         for kordinaatti in kordinaatit:
@@ -65,7 +64,7 @@ class HausdorffVertailu:
 
         for piste_b in joukko_B:
             arvo = (piste_a[0]-piste_b[0])**2 + (piste_a[1]-piste_b[1])**2
-            
+
             #Koska kaikki tätä pienemmät arvon on läpikäyty voidaan tällä tuloksella pysäyttää etsiminen.
             if arvo == 18:
                 return math.sqrt(18)

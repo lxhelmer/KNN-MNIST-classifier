@@ -3,6 +3,7 @@
 
 Ohjelmisto sisältää normaalit yksikkötestit, jotka pitävät huolta että koodi toimii oikein eikä siihen ainakaan lisätä optimoidessa uusia virheitä. 
 Yksikkötestien testiarvot on laskettu osittain koneellisesti ja osittain käsin. Koneellisesti lasketut arvot on tarkistettu käsin hyvällä tasolla.
+Testit tarkistavat eri matemaattisten funktioiden tuloksia ja muokatun hausdorff etäisyyden osatuloksia.
 
 Otin tutkittavaksi pariksi MNIST testikuvien joukosta kuvan numero 20 ja harjoituskuvien joukosta kuvan numero 19. Valinta oli käytännössä
 sattumanvarainen. Laskin kyseisten kuvien välisen muokatun hausdorff etäisyyden "A Modifed Hausdorff Distance for Object Matching" julkaisun mukaan käsin.

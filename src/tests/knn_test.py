@@ -13,39 +13,43 @@ class TestKNN(unittest.TestCase):
         HV = HausdorffVertailu()
         self.tester_knn = KLahimmat(HV)
 
-#Testaa knn valintaa kun kaikki arvot 0-9 tulevat äänestykseen.
-#Todellisuudessa arrayn koko on 60t tuplea
+    #Testaa knn valintaa kun kaikki arvot 0-9 tulevat äänestykseen.
+    #Todellisuudessa arrayn koko on 60t tuplea
     def test_knn_kaikki(self):
         test_array = [(0.1,1),(0.2,2),(0.3,3),(0.4,4),
                       (0.5,5),(0.6,6),(0.7,7),(0.8,8),
                       (0.9,9),(0.01,0)]
-        self.assertEqual(self.tester_knn.knn_jarj(test_array,10),[1,1,1,1,1,1,1,1,1,1])
+        self.assertEqual(self.tester_knn.knn_jarjestaja(test_array,10),[1,1,1,1,1,1,1,1,1,1])
 
-#Testaa että n tyypin alkioiden määrä lasketaan oikein muodostaessa yleisyys listaa
+    #Testaa että n tyypin alkioiden määrä lasketaan oikein muodostaessa yleisyys listaa
     def test_knn_4ykkosta(self):
         test_array = [(0.1,1),(0.2,1),(0.3,1),(0.4,1),
                       (0.5,5),(0.6,6),(0.7,7),(0.8,8),
                       (0.9,9),(0.01,0)]
-        self.assertEqual(self.tester_knn.knn_jarj(test_array,10),[1,4,0,0,0,1,1,1,1,1])
+        self.assertEqual(self.tester_knn.knn_jarjestaja(test_array,10),[1,4,0,0,0,1,1,1,1,1])
 
-#Testaa että k ollessa pienempi kuin arvioiden määrä vain k arviota otetaan huomioon
+    #Testaa että k ollessa pienempi kuin arvioiden määrä vain k arviota otetaan huomioon
     def test_knn_4ykkostak5(self):
         test_array = [(0.01,0),(0.1,1),(0.2,1),(0.3,1),(0.4,1),
                       (0.5,5),(0.6,6),(0.7,7),(0.8,8),
                       (0.9,9)]
-        self.assertEqual(self.tester_knn.knn_jarj(test_array,5),[1,4,0,0,0,0,0,0,0,0])
+        self.assertEqual(self.tester_knn.knn_jarjestaja(test_array,5),[1,4,0,0,0,0,0,0,0,0])
 
     def test_knn_4ykkostak4(self):
         test_array = [(0.1,1),(0.2,1),(0.3,1),(0.4,1),
                       (0.5,5),(0.6,6),(0.7,7),(0.8,8),
                       (0.9,9),(0.01,0)]
-        self.assertEqual(self.tester_knn.knn_jarj(test_array,4),[1,3,0,0,0,0,0,0,0,0])
+        self.assertEqual(self.tester_knn.knn_jarjestaja(test_array,4),[1,3,0,0,0,0,0,0,0,0])
     
     def test_knn_sama(self):
         test_array = [(0.1,1),(0.2,1),(0.3,1),(0.4,1),
                       (0.1,5),(0.6,6),(0.7,7),(0.8,8),
                       (0.9,9),(0.01,0)]
-        self.assertEqual(self.tester_knn.knn_jarj(test_array,5),[1,3,0,0,0,1,0,0,0,0])
+        self.assertEqual(self.tester_knn.knn_jarjestaja(test_array,5),[1,3,0,0,0,1,0,0,0,0])
+
+
+    #Ajetaan knn luokittelu tunnetulla tapauksella ja tarkistetaan tuloksesta luokittelu sekä
+    #sen varmuus.
 
     def test_knn(self):
         test_kuvat = np.array(

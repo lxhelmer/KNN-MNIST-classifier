@@ -9,8 +9,8 @@ class TestHausdorff(unittest.TestCase):
     def setUp(self):
         self.test_hausdorff = HausdorffVertailu()
 
+    
     def test_hausdorff_etaisyys(self):
-
         laskettu_etaisyys = 0.54655546181586
         test_etaisyys = self.test_hausdorff.m_hausdorff_etaisyys(A_pisteet, B_pisteet,
                                                             A_ruudut, B_ruudut)

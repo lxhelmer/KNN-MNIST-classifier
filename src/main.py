@@ -79,8 +79,8 @@ def main():
         print("alkaa")
         alku_aika = time.time()
 
-
-        arvio = KNN.k_lahimmat(                                        #arvioidaan luokiteltavan kuvan nimike
+        #arvioidaan luokiteltavan kuvan nimike
+        arvio = KNN.k_lahimmat(
                 k,
                 luokiteltava,
                 harjoitusdata,
@@ -99,7 +99,8 @@ def main():
         kaikki += 1
         
         raportti(oikein, kaikki, tulokset, luokiteltava_ruudut, loppu_aika-alku_aika)
-
+    
+    #Näytetään lopuksi luokittelut kootusti
     for res in tulokset:
         print("Arvioitu luku: " + str(res[0]) + " | Todellinen luku: " + str(res[1]),end="")
         if res[0] == res[1]:

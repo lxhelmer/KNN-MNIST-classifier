@@ -3,8 +3,13 @@
 MNIST luokittelu KNN metodia käyttäen.
 
 
-[määrittelydokumentti](https://github.com/lxhelmer/tiralabra/blob/main/docs/m%C3%A4%C3%A4rittelydokumentti.md)
+[Määrittelydokumentti](https://github.com/lxhelmer/tiralabra/blob/main/docs/m%C3%A4%C3%A4rittelydokumentti.md)
 
+[Käyttöohje](https://github.com/lxhelmer/tiralabra/blob/main/docs/K%C3%A4ytt%C3%B6ohje.md)
+
+[Testausdokumentti](https://github.com/lxhelmer/tiralabra/blob/main/docs/Testausdokumentti.md)
+
+[Toteutusdokumentti](https://github.com/lxhelmer/tiralabra/blob/main/docs/Toteutusdokumentti.md)
 
 
 

@@ -1,6 +1,5 @@
 import time
 import numpy as np
-import random
 from lataaja import lataa_kuvat, lataa_nimikkeet
 from data.pistejoukko_gen import pistejoukko, ruudut
 from hausdorffvertailu import HausdorffVertailu
@@ -27,16 +26,28 @@ def raportti(oikein, yhteensa, tulokset,luok_ruudut, aika):
 
 
 def main():
-    
+
+    print("Ohjelma luokittelee haluttuja mnist t10k-testisetin kuvia käyttäen KNN metodia")
+    print("ja muokattua hausdorff heuristiikkaa.")
+    print("Luokittelu alkaa ilmoitetusta indeksistä ja päättyy halutun kuvamäärän")
+    print("jälkeen tai kun viimeinen indeksin 9999 kuva on luokiteltu")
+
     while True:
         try:
-            k = int(input("syötä haluttu k: "))   # määritetään k arvo
-            maara = int(input("syötä luokiteltavien kuvien määrä: "))
-            luok_num = int(input("syötä aloitus indeksi: "))
+            k = int(input("\nSyötä haluttu k: "))   # määritetään k arvo
+            maara = int(input("\nSyötä luokiteltavien kuvien määrä (kesto n.40s per kuva) : "))
+            luok_num = int(input("\nSyötä aloitus kuvan indeksi (0-9999): "))
+            if k <= 0 or k > 60000 or maara <= 0 or maara > 9999 or luok_num < 0 or luok_num > 9999:
+                print("syötä valideja lukuja")
+                continue
             break
         except ValueError:
             print("Syötä vain numeroita!")
             continue
+
+    loppu = luok_num+maara
+    if luok_num+maara>10000:
+        loppu = 10000
 
     print("aloitetaan")
     harjoitus_mnist = lataa_kuvat(HARJOITUS_POLKU)
@@ -71,7 +82,7 @@ def main():
     kaikki = 0
     oikein = 0
 
-    for i in range(luok_num,luok_num+maara):
+    for i in range(luok_num,loppu):
         luokiteltava_mnist = testidata[i]
         luokiteltava = pistejoukko(luokiteltava_mnist).tolist() #luodaan pixelitoteutuksesta kordinaatti joukko
         luokiteltava_ruudut = ruudut(luokiteltava_mnist).tolist()
@@ -97,9 +108,9 @@ def main():
         if arvio == testinimikkeet[i]:
             oikein += 1
         kaikki += 1
-        
+
         raportti(oikein, kaikki, tulokset, luokiteltava_ruudut, loppu_aika-alku_aika)
-    
+
     #Näytetään lopuksi luokittelut kootusti
     for res in tulokset:
         print("Arvioitu luku: " + str(res[0]) + " | Todellinen luku: " + str(res[1]),end="")

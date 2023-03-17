@@ -11,10 +11,12 @@ class HausdorffVertailu:
     def m_hausdorff_etaisyys(self, luokiteltava, harjoitus, ruudut_luokiteltava, ruudut_harjoitus):
         luokiteltava_harjoitus = self.d_6(luokiteltava, harjoitus, ruudut_harjoitus)
         harjoitus_luokiteltava = self.d_6(harjoitus,luokiteltava, ruudut_luokiteltava)
-        return max(luokiteltava_harjoitus ,harjoitus_luokiteltava)      #vertaillaan molempiin suuntiin
+
+        return max(luokiteltava_harjoitus ,harjoitus_luokiteltava)
+        #vertaillaan molempiin suuntiin
 
 
-    def etaisyys_a_B(self, piste_a, joukko_B, ruudut_B, juuri):
+    def etaisyys_a_B(self, piste_a, joukko_B, ruudut_B):
         minimi = 1600
         aY = piste_a[0]
         aX = piste_a[1]
@@ -53,9 +55,8 @@ class HausdorffVertailu:
         for kordinaatti in kordinaatit:
             if  aY+kordinaatti[0] >= 0 and aY+kordinaatti[0] <= 27 and \
                 aX+kordinaatti[1] >= 0 and aX+kordinaatti[1] <= 27:
-                    if ruudut_B[aY+kordinaatti[0]][aX+kordinaatti[1]] == True:
-                        return etaisyydet[(abs(kordinaatti[0]),abs(kordinaatti[1]))]
-
+                if ruudut_B[aY+kordinaatti[0]][aX+kordinaatti[1]] == True:
+                    return etaisyydet[(abs(kordinaatti[0]),abs(kordinaatti[1]))]
 
 
         for piste_b in joukko_B:
@@ -71,18 +72,15 @@ class HausdorffVertailu:
 
         return math.sqrt(minimi)
         #return np.min(cdist(np.array([piste_a]), joukko_B))
-        #nopea vaihtoehto minimi etäisyyden laskemiselle
+        #nopea vaihtoehto (a-B) minimi etäisyyden laskemiselle
         #tosin tätä käyttäess tulee listojen olla numpy array muodossa
-        #eikä etäisyyksien määrää ollut tehokasta karsio numpy arrayn 
+        #eikä etäisyyksien määrää ollut tehokasta karsio numpy arrayn
         #hitaamman lookup toiminnon takia.
 
     def d_6(self, joukko_A, joukko_B,ruudut_B):
-        juuri = math.sqrt(2)
+
         summa = 0
-
         for piste_a in joukko_A:
-
-
-            summa += self.etaisyys_a_B(piste_a, joukko_B,ruudut_B, juuri)
+            summa += self.etaisyys_a_B(piste_a, joukko_B,ruudut_B)
 
         return summa/len(joukko_A)

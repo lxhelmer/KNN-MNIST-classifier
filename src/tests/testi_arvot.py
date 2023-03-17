@@ -3,6 +3,9 @@ from lataaja import lataa_kuvat
 
 # pylint: disable=line-too-long
 
+#Tarkistettuja MNIST arvoja joita voidaan käyttää testaamisessa
+#Lisäksi A_mnist ja B_mnist kuvien välinen hausdorff etäisyys on laskettu käsin ja tarkka
+#arvo on tiedossa testaamista varten.
 
 HARJOITUS_POLKU = "../../train/train-"
 TESTI_POLKU = "../../test/t10k-"

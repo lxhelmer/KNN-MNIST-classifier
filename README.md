@@ -1,4 +1,4 @@
-# TIRAPROJEKTI
+# TIRAPROJEKTI / Algorithms and data structures project course
 
 MNIST luokittelu KNN metodia käyttäen.
 

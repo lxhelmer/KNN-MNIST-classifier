@@ -64,6 +64,8 @@ Ohjelma koostuu kahdesta pääluokasta ja näitä tukevista apufunktioista. Apuf
 luokkainstansseina olisi ollut luettavuuden ja toimintalogiikan kannalta merkittävästi heikompi ratkaisu. Tällaisia ovat esimerkiski mnist datan muokkaamiseen käytetyt
 funktiot.
 
+# Rakenne
+
 ![image](https://user-images.githubusercontent.com/49132322/225993774-6a0ebc6d-2a50-4ae9-a9b7-e1989bf62206.png)
 
 
@@ -91,6 +93,7 @@ merkintä olisi siinä mielessä virheellinen.
 
 Lähteenä projektille käytin [A Modified Hausdorff Distance for Object Matching](https://citeseerx.ist.psu.edu/doc/10.1.1.1.8155) paperia. Tosin kuvat paperista poiketen eivät olleet 'edge map' muodossa.
 
+# Testaaminen
 
 ![image](https://user-images.githubusercontent.com/49132322/225994650-198ec2b2-1d15-4143-a752-c8d537060c60.png)
 

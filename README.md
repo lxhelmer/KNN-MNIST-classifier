@@ -25,27 +25,39 @@ tira
 
 Asenna ohjelman vaatimat riippuvuudet poetryllä
 
-```shell poetry install```
+```shell 
+poetry install
+```
 
 Ohjelman käyttämistä helpottaa poetryn virtuaaliympäristön käyttö. Sen voi ottaa käyttöön komennolla:
 
-```shell poetry shell```
+```shell 
+poetry shell
+```
 
 Ohjelman voi käynnistää komennolla:
 
-```shell poetry run invoke start ```
+```shell 
+poetry run invoke start
+```
 
 Ohjelman testit voi ajaa komennolla:
 
-```shell poetry run invoke start ```
+```shell
+ poetry run invoke start
+```
 
 Ohjelman koodin laadun voi tarkastaa komennolla:
 
-```shell poetry run invoke lint ```
+```shell
+poetry run invoke lint
+```
 
 Ohjelman testikattavuuden voi tarkistaa komennolla:
 
-```shell poetry run invoke coverage-report ```
+```shell 
+poetry run invoke coverage-report
+```
 
 Kun ohjelmaa käytetään poetry virtuaaliympäristössä "poetry run" osa ei ole välttämätön. 
 

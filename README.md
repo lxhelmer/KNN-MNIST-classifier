@@ -44,7 +44,7 @@ poetry run invoke start
 Ohjelman testit voi ajaa komennolla:
 
 ```shell
- poetry run invoke start
+ poetry run invoke test
 ```
 
 Ohjelman koodin laadun voi tarkastaa komennolla:

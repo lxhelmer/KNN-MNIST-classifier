@@ -1,7 +1,7 @@
 import heapq
 import time
 from multiprocessing import Manager
-from prosessit import prosessit
+from .prosessit import prosessit
 
 class KLahimmat:
 

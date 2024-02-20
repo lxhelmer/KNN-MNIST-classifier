@@ -84,6 +84,8 @@ def main():
 
     for i in range(luok_num,loppu):
         luokiteltava_mnist = testidata[i]
+        print("luokiteltava")
+        print(luokiteltava_mnist)
         luokiteltava = pistejoukko(luokiteltava_mnist).tolist() #luodaan pixelitoteutuksesta kordinaatti joukko
         luokiteltava_ruudut = ruudut(luokiteltava_mnist).tolist()
 

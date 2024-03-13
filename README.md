@@ -4,7 +4,7 @@ MNIST luokittelu KNN metodia käyttäen.
 
 ### Esimerkkituloste
 
-[img](https://github.com/lxhelmer/KNN-MNIST-classifier/blob/main/example.png)
+![img](https://github.com/lxhelmer/KNN-MNIST-classifier/blob/main/example.png)
 
 # Ohjelman käyttö
 
